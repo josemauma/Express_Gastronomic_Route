@@ -4,7 +4,8 @@
 
 [![Python](https://img.shields.io/badge/Python-3.10-blue)](https://www.python.org/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-Web_App-ff4b4b)](https://streamlit.io/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC%20BY--NC--ND%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
+
 
 ---
 
@@ -92,7 +93,7 @@ streamlit run app.py
 
 ## 📄 Licencia
 
-Este proyecto está licenciado bajo la **Licencia MIT**.  
+Este proyecto está licenciado bajo la **Licencia CC BY-NC-ND 4.0**.  
 Consulta el archivo [`LICENSE`](./LICENSE) para más detalles.
 
 ---

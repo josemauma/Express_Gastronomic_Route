@@ -1,6 +1,6 @@
-# 🗺️🍽️ Ruta Gastronómica Express
+# 🗺️🍽️ Express Gastronomic Route
 
-> _Itinerarios à la carte para paladares inquietos_
+> _Itinerarios à la carte for adventurous foodies_
 
 [![Python](https://img.shields.io/badge/Python-3.10-blue)](https://www.python.org/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-Web_App-ff4b4b)](https://streamlit.io/)
@@ -9,102 +9,111 @@
 
 ---
 
-## 🌟 ¿Qué es esto?
+---
 
-**Ruta Gastronómica Express** es una aplicación web inteligente que te sugiere rutas personalizadas por los mejores restaurantes según tus gustos, tu presupuesto, el clima... ¡y tu hambre de aventuras!  
-Todo esto en tiempo real y acompañado de un itinerario interactivo y un PDF con estilo.
+## 🌟 What is this?
+
+**Ruta Gastronómica Express** is a smart web app that suggests personalized routes through the best restaurants based on your tastes, budget, weather... and your hunger for adventure! 
+
+All of this in real time, along with an interactive itinerary and a stylish PDF.
 
 ---
 
-## 🧠 ¿Cómo funciona?
+## 🧠 How does it work?
 
 ```mermaid
 graph TD;
-    A[Usuario] --> B[Preferencias en Streamlit];
-    B --> C[Llamadas a las APIs];
-    B --> D[Módulo de Recomendación];
-    C --> E[Módulo de Optimización de Rutas];
-    D --> E[Modelo Optimizador de Rutas];
-    E --> F[Generador PDF];
-    F --> H[Itinerario descargable en PDF];
-    E --> G[Visualización en pantalla];
-    
+    A[User] --> B[Preferences in Streamlit];
+    B --> C[API Calls];
+    B --> D[Recommendation Module];
+    C --> E[Route Optimization Module];
+    D --> E[Route Optimization Model];
+    E --> F[PDF Generator];
+    F --> H[Downloadable Itinerary in PDF];
+    E --> G[On-Screen Visualization];
     
 ```
 ---
-## 🎯 Funcionalidades clave
+## 🎯 Key Features
 
-- ✅ Recomendación de restaurantes basada en tus gustos  
-- ✅ Rutas optimizadas según tiempo, transporte y clima  
-- ✅ Mapa interactivo con itinerario  
-- ✅ Generación de PDF personalizado con tu ruta  
-- ✅ Modular, escalable y aplicable a otras ciudades  
+- ✅ Restaurant recommendations based on your preferences
+
+- ✅ Optimized routes based on time, transport, and weather
+
+- ✅ Interactive map with itinerary
+
+- ✅ Custom PDF generation with your route
+
+- ✅ Modular, scalable, and applicable to other cities
+  
+---
+
+## 🧪 Technologies
+
+| Type             | Tools                                                          |
+|------------------|----------------------------------------------------------------|
+| Language         | Python                                                         |
+| Web Backend      | Flask + Streamlit                                              |
+| Recommendations  | scikit-learn                                                   |
+| APIs             | Google Maps, TripAdvisor, OpenWeather, Valhalla                |
+| Visualization    | Streamlit Map + PDF Generator                                  |
+| Dev Tools        | GitHub, Postman, VS Code                                       |
 
 ---
 
-## 🧪 Tecnologías
-
-| Tipo             | Herramientas                                                  |
-|------------------|---------------------------------------------------------------|
-| Lenguaje         | Python                                                        |
-| Backend Web      | Flask + Streamlit                                             |
-| Recomendaciones  | scikit-learn                                                  |
-| APIs             | Google Maps, TripAdvisor, OpenWeather, Valhalla               |
-| Visualización    | Streamlit Map + PDF Generator                                 |
-| Dev Tools        | GitHub, Postman, VS Code                                      |
-
----
-
-## 🛠️ Instalación
+## 🛠️ Installation
 
 ```bash
 git clone https://github.com/josemauma/TFM_Ruta_Gastronomica.git
 cd TFM_Ruta_Gastronomica
 pip install -r requirements.txt
 streamlit run app.py
+
 ```
 
 ---
 
-## 💡 Ejemplo de uso
+## 💡 Example of Use
 
-1. El usuario accede a la interfaz y responde preguntas como:
-   - Tipo de comida preferido
-   - Presupuesto
-   - Medio de transporte
-   - Tiempo disponible
-2. La app conecta con las APIs externas:
-   - Google Maps
-   - TripAdvisor
-   - OpenWeather
-3. Se genera una ruta optimizada con recomendaciones personalizadas
-4. Se visualiza en un mapa interactivo
-5. Se genera un PDF descargable con el itinerario y sugerencias
+1. The user accesses the interface and answers questions like:
+   - Preferred type of food  
+   - Budget  
+   - Mode of transport  
+   - Available time  
 
----
+2. The app connects to external APIs:
+   - Google Maps  
+   - TripAdvisor  
+   - OpenWeather  
 
-## 🚧 Estado del proyecto
-
-- 🔍 En desarrollo   
-- 🧠 Implementación de modelo de recomendación en proceso  
-- 📄 Generación de PDF e integración de APIs próximamente  
+3. An optimized route with personalized recommendations is generated.  
+4. It is displayed on an interactive map.  
+5. A downloadable PDF with the itinerary and suggestions is generated.  
 
 ---
 
-## 📄 Licencia
+## 🚧 Project Status
 
-Este proyecto está licenciado bajo la **Licencia CC BY-NC-ND 4.0**.  
-Consulta el archivo [`LICENSE`](./LICENSE) para más detalles.
+- 🔍 In development  
+- 🧠 Recommendation model implementation in progress  
+- 📄 PDF generation and API integration coming soon  
 
 ---
 
-## 📫 Contacto
+## 📄 License
+
+This project is licensed under the **CC BY-NC-ND 4.0 License**.  
+See the [`LICENSE`](./LICENSE) file for more details.
+
+---
+
+## 📫 Contact
 
 **José Manuel Muelas de la Linde**  
+Master’s Student in Big Data, AI & Data Engineering
 
-Estudiante de Máster en Big Data, IA e Ingeniería de Datos  
 
-📍 Málaga, España  
+📍 Málaga, Spain  
 🔗 [LinkedIn](www.linkedin.com/in/josemanuel-muelas-delalinde)  
 🐙 [GitHub](https://github.com/josemauma)
 

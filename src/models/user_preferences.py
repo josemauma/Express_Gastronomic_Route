@@ -91,5 +91,5 @@ def show_preferences_form():
 
 
 # Run the preferences form
-if __name__ == "__main__":
-    show_preferences_form()
+#if __name__ == "__main__":
+#    show_preferences_form()

@@ -1,0 +1,28 @@
+[
+  {
+    "nombre": "El Pimpi",
+    "ubicación": "C. Granada, 62, Distrito Centro, 29015 Málaga",
+    "cocina": "tradicional andaluza",
+    "ambiente": "acogedor y bullicioso",
+    "precio_medio": "30€",
+    "público": "turistas y locales",
+    "extras": "bodega centenaria, música en vivo ocasional",
+    "lat": 36.72195,
+    "lon": -4.41813,
+    "url": "https://elpimpi.com/"
+  },
+  {
+    "nombre": "La Tranca",
+    "ubicación": "C/ Carretería, 92, 29008 Málaga",
+    "cocina": "tapas innovadoras",
+    "ambiente": "informal y animado",
+    "precio_medio": "20€",
+    "público": "jóvenes y gourmets",
+    "extras": "barra de madera original, vermú de grifo",
+    "lat": 36.72439,
+    "lon": -4.42100,
+    "url": "https://www.latranca.es/"
+  }
+]
+
+

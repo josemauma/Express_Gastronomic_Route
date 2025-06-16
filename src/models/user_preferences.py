@@ -3,11 +3,14 @@ import json
 from datetime import time
 import os
 from datetime import datetime
+from dotenv import load_dotenv
 
-# Ruta a tu carpeta predefinida
-DATABASE_DIR = "/Users/josemanuelmuelas/Desktop/Express_Gastronomic_Route/src/database/Users_preferences"
+# Load environment variables from .env file
+load_dotenv()
+
+# Get DATABASE_DIR from environment variable, fallback to default if not set
+DATABASE_DIR = os.getenv("DATABASE_DIR", os.path.join(os.path.dirname(__file__), "../../database"))
 os.makedirs(DATABASE_DIR, exist_ok=True)
-
 def show_preferences_form():
     st.set_page_config(page_title="Gastronomic Routes", page_icon="🍽️", layout="centered")
 

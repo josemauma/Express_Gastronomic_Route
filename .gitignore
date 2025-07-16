@@ -4,5 +4,7 @@ __pycache__
 local-storm-459018-n0-d4614ba670eb.json
 prompt.py
 Database
-Services/main.py
-Services/RestaurantInfoTop.py
+main.py
+malagaPortada.jpg
+webApp/models
+webApp/Views

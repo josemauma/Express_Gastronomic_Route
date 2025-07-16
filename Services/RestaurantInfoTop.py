@@ -82,6 +82,7 @@ class TopRestaurantsExtractor:
                 "wheelchair_accessible_entrance": r.get("wheelchair_accessible_entrance", False),
                 "takeout": r.get("takeout", False),
                 "price_level": r.get("price_level", -1),
+                "website": r.get("website"),
                 "delivery": r.get("delivery", False),
                 "reservable": r.get("reservable", False),
                 

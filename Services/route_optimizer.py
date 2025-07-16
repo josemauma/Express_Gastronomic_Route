@@ -45,10 +45,10 @@ class RouteOptimizer:
         for (lat, lng), p in zip(coords, restaurants):
             folium.Marker(location=(lat, lng), popup=p['name'], icon=folium.Icon(color="red")).add_to(m)
         folium.PolyLine(locations=route_coords, weight=6, opacity=0.7).add_to(m)
-        m.save(html_file)
-        print("Folium map saved at:", os.path.abspath(html_file))
+        # m.save(html_file)
+        # print("Folium map saved at:", os.path.abspath(html_file))
         # Optional: open map
-        webbrowser.open(f"file://{os.path.abspath(html_file)}", new=3)
+        # webbrowser.open(f"file://{os.path.abspath(html_file)}", new=3)
         return html_file
 
     def get_google_maps_url(self, start, restaurants):

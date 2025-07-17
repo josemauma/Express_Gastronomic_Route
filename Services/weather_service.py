@@ -20,7 +20,7 @@ class WeatherAPI:
             data = response.json()
             return data
         except requests.exceptions.RequestException as e:
-            print(f"Error en la solicitud: {e}")
+            print(f"Request error: {e}")
             return None
 
     def get_weather_forecast(self, city):
@@ -42,7 +42,7 @@ class WeatherAPI:
                 forecast.append(day_forecast)
             return forecast
         except requests.exceptions.RequestException as e:
-            print(f"Error en la solicitud: {e}")
+            print(f"Request error: {e}")
             return None
 
     def get_best_day_to_go_out(self, forecast, start_date, end_date):
@@ -50,7 +50,7 @@ class WeatherAPI:
             start_timestamp = int(datetime.strptime(start_date, '%d/%m/%Y').timestamp())
             end_timestamp = int(datetime.strptime(end_date, '%d/%m/%Y').timestamp())
         except ValueError:
-            print("Error: Formato de fecha inválido. Use 'DD/MM/AAAA'.")
+            print("Error: Invalid date format. Use 'DD/MM/YYYY'.")
             return None
 
         filtered_forecast = [
@@ -59,7 +59,7 @@ class WeatherAPI:
         ]
 
         if not filtered_forecast:
-            print("No hay datos de pronóstico para el rango de fechas proporcionado.")
+            print("No forecast data available for the provided date range.")
             return None
 
         best_day = min(
@@ -80,16 +80,14 @@ class WeatherAPI:
         
             
     def filter_temp_range(self, forecast, start_date, end_date):
-        """Filtra el pronóstico para quedarse solo con los días entre start_date y end_date (incluidos)."""
-        # Convierte las fechas a objetos datetime para comparar
         fmt = "%d/%m/%Y"
         try:
             start = datetime.strptime(start_date, fmt)
             end = datetime.strptime(end_date, fmt)
         except ValueError:
-            print("Error: Formato de fecha inválido. Use 'DD/MM/AAAA'.")
+            print("Error: Invalid date format. Use 'DD/MM/YYYY'.")
             return []
-        # Filtra los días dentro del rango
+        # Filter days within the range
         return [
             day for day in forecast
             if start <= datetime.strptime(day['date'], fmt) <= end

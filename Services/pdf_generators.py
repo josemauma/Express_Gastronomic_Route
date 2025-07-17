@@ -1,5 +1,11 @@
 from fpdf import FPDF
 from datetime import datetime
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+photo_dir = os.getenv("PHOTO_DIR")
 
 
 class GastronomyPDF:
@@ -52,7 +58,7 @@ class GastronomyPDF:
         self.pdf.set_font("Arial", '', 14)
         self.pdf.ln(10)
         self.pdf.ln(20)
-        self.pdf.image("malagaPortada.jpg", x=30, w=150)
+        self.pdf.image(os.path.join(photo_dir, "malagaPortada.jpg"), x=30, w=150)
         self.pdf.ln(20)
         if maps_url:
             self.pdf.set_font("Arial", 'B', 14)

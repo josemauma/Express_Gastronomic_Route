@@ -4,15 +4,40 @@ import os
 import json
 import re
 from utils import pretty_forecast_lines, pretty_best_day, convert_dateinput_to_str
-
-# Ajustar path para importar desde Services
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from Services import LLMAPI, TopRestaurantsExtractor, SYSTEM_PROFILE, WeatherAPI, RestaurantSelection, RouteOptimizer, GastronomyPDF
 
 from dotenv import load_dotenv
+
 load_dotenv()
 
-# --- Sidebar para parámetros de usuario
+api_key_gmaps = os.getenv("API_GOOGLE_PLACES")
+api_key_weather = os.getenv("API_WEATHER_KEY")
+pdf_dir = os.getenv("PDF_OUTPUT_DIR", ".")
+user_prefs_dir = os.getenv("USER_PREFS_DIR", ".")
+photo_dir = os.getenv("PHOTO_DIR")
+
+if "started" not in st.session_state:
+    st.session_state.started = False
+
+if not st.session_state.started:
+    st.markdown("""
+        <div style="text-align: center;">
+            <h1>Express Gastronomic Route</h1>
+            <h3>Master's Thesis</h3>
+            <p><b>Author:</b> José Manuel Muelas de la Linde</p>
+            <p><b>Master in Artificial Intelligence, Big Data and Data Engineering</b></p>
+        </div>
+    """, unsafe_allow_html=True)
+    st.image(os.path.join(photo_dir, "malagaPortada.jpg"), width=800)  
+
+
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        if st.button("Start the gastronomic experience 🍽️"):
+            st.session_state.started = True
+    st.stop()  
+
 st.sidebar.title("Route Parameters")
 address = st.sidebar.text_input("Address", value="Calle Larios")
 city = st.sidebar.text_input("City/Town", value="Málaga")
@@ -22,18 +47,15 @@ food_type = st.sidebar.text_input("Food type (optional)", value="")
 
 
 if st.sidebar.button("Search Restaurants and Plan Route"):
-    st.info("Cooking up your gastronomic route... 🍽️  (It's a Demo, maybe you won't find everything you search for)")
-
-    api_key_gmaps = os.getenv("API_GOOGLE_PLACES")
-    api_key_weather = os.getenv("API_WEATHER_KEY")
-    address = city
+    st.info("Cooking up your gastronomic route... 🍽️")
 
     # 1. Restaurant Search
     restaurant_selector = RestaurantSelection()
     restaurant_list, restaurants_json_file = restaurant_selector.fetch_and_save(
         address=address,
         food_type=food_type or None,
-        out_file="restaurant_details.json"
+        #out_file="/Users/josemanuelmuelas/Desktop/Express_Gastronomic_Route/Database/Users_preferences/restaurant_details.json"
+        out_file = os.path.join(user_prefs_dir, "restaurant_details.json")
     )
     st.success(f"✅ {len(restaurant_list)} restaurants found.")
 
@@ -45,11 +67,11 @@ if st.sidebar.button("Search Restaurants and Plan Route"):
     extractor = TopRestaurantsExtractor(lista)
     top3_restaurant = extractor.get_top_3(n=3)
 
-    # 4. LLM summaries (descripción de cada restaurante)
+    # 4. LLM summaries 
     llm = LLMAPI()
     descriptions = []
     for rest in top3_restaurant:
-        rest['best_day'] = None  # Temporal, lo pondremos después si quieres
+        rest['best_day'] = None  
         user_message = {
             "role": "user",
             "content": json.dumps(rest, ensure_ascii=False, indent=2)
@@ -66,14 +88,15 @@ if st.sidebar.button("Search Restaurants and Plan Route"):
         except Exception:
             salida = str(response)
         match = re.search(
-            r"Description:\s*(.*?)(?:\nReviews:|\Z)",
+            r"Description:\s*[\(\[]*(.*?)[\)\]]*\s*(?:\n+Reviews:|\n+Weekly opening hours:|\Z)",
             salida,
             re.IGNORECASE | re.DOTALL
         )
-        descripcion = match.group(1).strip() if match else "No description found."
+        descripcion = match.group(1).strip() if match else salida.strip()
+        rest["llm_description"] = descripcion
         descriptions.append(descripcion)
 
-    # 5. Mostrar restaurantes y descripciones bonitas
+    # 5. Show restaurants and nice descriptions
     st.markdown(
         f"<h2 style='text-align:center; font-size:2.5em;'>{'Gastronomic Route: ' + city}</h2>",
         unsafe_allow_html=True
@@ -100,6 +123,11 @@ if st.sidebar.button("Search Restaurants and Plan Route"):
         wheelchair = r.get('wheelchair_accessible', None)
         wheelchair_str = "Yes" if wheelchair is True else ("No" if wheelchair is False else "Not available")
         st.write(f"Wheelchair Accessible: {wheelchair_str}")
+        website = r.get('website', None)
+        if website:
+            st.markdown(f"[Website]({website})")
+        else:
+            st.write("Website: Not available")
         # Price Level
         price_level = r.get('price_level', None)
         if price_level is not None:
@@ -127,7 +155,7 @@ if st.sidebar.button("Search Restaurants and Plan Route"):
     st.subheader("Optimized Route")
     st.markdown(f"[View route in Google Maps]({maps_url})")
 
-    # 7. Weather info (AL FINAL)
+    # 7. Weather info 
     weather = WeatherAPI(api_key_weather)
     start_str = convert_dateinput_to_str(start_date)
     end_str = convert_dateinput_to_str(end_date)
@@ -142,9 +170,8 @@ if st.sidebar.button("Search Restaurants and Plan Route"):
         st.markdown(f"- {line}")
     st.markdown(f"### Best day to eat:")
     st.markdown(pretty_best_day(best_day))
-    
-    
-    pdf_filename = f"gastronomic_route_{city.replace(' ', '_')}.pdf"
+
+    pdf_filename = os.path.join(pdf_dir, f"gastronomic_route_{city.replace(' ', '_')}.pdf")
     pdfgen = GastronomyPDF(
         filename=pdf_filename,
         title=f"Gastronomic Route: {city}",
@@ -167,7 +194,7 @@ if st.sidebar.button("Search Restaurants and Plan Route"):
         mime="application/pdf"
     )
 
-    st.success("All steps completed! 🚀")
+    st.success("Your gastronomic route is ready! 🍽️")
 
 else:
     st.info("Adjust parameters and click the button to generate your route.")

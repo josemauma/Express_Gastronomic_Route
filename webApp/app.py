@@ -29,10 +29,10 @@ if not st.session_state.started:
             <p><b>Master in Artificial Intelligence, Big Data and Data Engineering</b></p>
         </div>
     """, unsafe_allow_html=True)
-    st.image(os.path.join(photo_dir, "malagaPortada.jpg"), width=800)  
+    st.image(os.path.join(photo_dir, "malagaPortada.jpg"), width=700)
 
 
-    col1, col2, col3 = st.columns([1, 2, 1])
+    col1, col2, col3 = st.columns([1.3, 2, 1])
     with col2:
         if st.button("Start the gastronomic experience 🍽️"):
             st.session_state.started = True
@@ -190,7 +190,7 @@ if st.sidebar.button("Search Restaurants and Plan Route"):
     st.download_button(
         label="Download gastronomic route as PDF",
         data=pdf_bytes,
-        file_name=pdf_filename,
+        file_name=os.path.basename(pdf_filename),
         mime="application/pdf"
     )
 

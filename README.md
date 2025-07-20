@@ -23,15 +23,19 @@ All of this in real time, along with an interactive itinerary and a stylish PDF.
 
 ```mermaid
 graph TD;
-    A[User] --> B[Preferences in Streamlit];
-    B --> C[API Calls];
-    B --> D[Recommendation Module];
-    C --> E[Route Optimization Module];
-    D --> E[Route Optimization Model];
-    E --> F[PDF Generator];
-    F --> H[Downloadable Itinerary in PDF];
+    A[User] --> B[Preferences in Streamlit UI];
+    B --> C[API Calls
+            - OpenWeather
+            - Google];
+    C --> D[Recommendation Module
+            - Ranking & Filtering
+            - Top 3 Selection];
+    C --> E[Route Optimization Model
+            - Google Maps Integration];
+    D --> G[On-Screen Visualization];
     E --> G[On-Screen Visualization];
-    
+    G --> F[PDF Generator];
+    F --> H[Downloadable Itinerary in PDF];
 ```
 ---
 ## 🎯 Key Features

@@ -10,3 +10,5 @@ webApp/Views
 Database/Users_preferences
 Database/gastronomic_route_Málaga.pdf
 malagaPortada.jpg
+.DS_Store
+Database/Users_preferences/,DS_Store

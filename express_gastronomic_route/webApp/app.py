@@ -4,8 +4,7 @@ import os
 import json
 import re
 from utils import pretty_forecast_lines, pretty_best_day, convert_dateinput_to_str
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from Services import LLMAPI, TopRestaurantsExtractor, SYSTEM_PROFILE, WeatherAPI, RestaurantSelection, RouteOptimizer, GastronomyPDF
+from express_gastronomic_route.Services import LLMAPI, TopRestaurantsExtractor, SYSTEM_PROFILE, WeatherAPI, RestaurantSelection, RouteOptimizer, GastronomyPDF
 
 from dotenv import load_dotenv
 

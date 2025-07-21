@@ -9,12 +9,13 @@ description = "A project for managing an Express Gastronomic Route."
 readme = "README.md"
 requires-python = ">=3.8"
 authors = [
-    { name="Jose Manuel Muelas" }
+    { name = "Jose Manuel Muelas" },
 ]
-dependencies =[
-    "streamlit >= 1.32"
-    "requests >= 2.31"
+dependencies = [
+    "streamlit>=1.32",
+    "requests>=2.31",
 ]
 
-
-
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["express_gastronomic_route*"]

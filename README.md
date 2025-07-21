@@ -57,18 +57,18 @@ graph TD;
 | Type             | Tools                                                          |
 |------------------|----------------------------------------------------------------|
 | Language         | Python                                                         |
-| Web Backend      | Flask + Streamlit                                              |
-| Recommendations  | scikit-learn                                                   |
-| APIs             | Google Maps, TripAdvisor, OpenWeather, Valhalla                |
+| Web Backend      | Streamlit                                                      |
+| Recommendations  | LLM phi4                                                       |
+| APIs             | Google Maps, OpenWeather                                       |
 | Visualization    | Streamlit Map + PDF Generator                                  |
-| Dev Tools        | GitHub, Postman, VS Code                                       |
+| Dev Tools        | GitHub, VS Code                                                |
 
 ---
 
 ## 🛠️ Installation
 
 ```bash
-git clone https://github.com/josemauma/TFM_Ruta_Gastronomica.git
+git clone https://github.com/josemauma/TFM_Ruta_Gastronomica
 cd TFM_Ruta_Gastronomica
 pip install -r requirements.txt
 streamlit run app.py
@@ -80,14 +80,12 @@ streamlit run app.py
 ## 💡 Example of Use
 
 1. The user accesses the interface and answers questions like:
-   - Preferred type of food  
-   - Budget  
-   - Mode of transport  
+   - Direction 
+   - Preferred type of food
    - Available time  
 
 2. The app connects to external APIs:
-   - Google Maps  
-   - TripAdvisor  
+   - Google Maps   
    - OpenWeather  
 
 3. An optimized route with personalized recommendations is generated.  
@@ -99,8 +97,6 @@ streamlit run app.py
 ## 🚧 Project Status
 
 - 🔍 In development  
-- 🧠 Recommendation model implementation in progress  
-- 📄 PDF generation and API integration coming soon  
 
 ---
 

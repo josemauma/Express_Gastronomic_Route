@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=42.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "express_gastronomic_route"
+version = "0.1.0"
+description = "A project for managing an Express Gastronomic Route."
+readme = "README.md"
+requires-python = ">=3.8"
+authors = [
+    { name="Jose Manuel Muelas" }
+]
+dependencies =[
+    "streamlit >= 1.32"
+    "requests >= 2.31"
+]
+
+
+

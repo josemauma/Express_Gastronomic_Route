@@ -14,3 +14,4 @@ express_gastronomic_route/Photos/malagaPortada.jpg
 express_gastronomic_route/Database/Users_preferences/.DS_Store
 malagaPortada.jpg
 express_gastronomic_route.egg-info/
+.pytest_cache/

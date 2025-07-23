@@ -27,24 +27,37 @@ class GastronomyPDF:
         sections = {"Description": "", "Reviews": [], "Opening hours": []}
         current = None
         for line in dossier.splitlines():
-            key = line.strip().lower().replace(":", "").replace("#", "")
-            if "description" in key:
-                current = "Description"; continue
-            if "review" in key:
-                current = "Reviews"; continue
-            if "opening hour" in key or "weekly opening hours" in key:
-                current = "Opening hours"; continue
-            line_stripped = line.strip()
-            if not line_stripped:
+            stripped = line.strip()
+            if not stripped:
                 continue
+
+            # NUEVO: Si es línea de cabecera (empieza con "#"), actúa en consecuencia
+            if stripped.startswith("#"):
+                header = stripped.lstrip("#").strip().lower()
+                if "description" == header:
+                    current = "Description"
+                    continue
+                if "reviews" == header:
+                    current = "Reviews"
+                    continue
+                if header in ("opening hours", "weekly opening hours"):
+                    current = "Opening hours"
+                    continue
+                # Si es un "#" que no reconoces, baja a siguiente
+                continue
+
+            # Sólo aquí procesas el contenido
             if current == "Description":
-                sections["Description"] += line_stripped + " "
+                sections["Description"] += stripped + " "
             elif current in ("Reviews", "Opening hours"):
-                sections[current].append(line_stripped)
+                sections[current].append(stripped)
+
+        # Trim or fallback
         if not any([sections["Description"], sections["Reviews"], sections["Opening hours"]]):
             sections["Description"] = dossier.strip()
         else:
             sections["Description"] = sections["Description"].strip()
+
         return sections
 
 

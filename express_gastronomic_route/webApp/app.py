@@ -1,5 +1,4 @@
 import streamlit as st
-import sys
 import os
 import json
 import re
@@ -53,8 +52,7 @@ if st.sidebar.button("Search Restaurants and Plan Route"):
     restaurant_list, restaurants_json_file = restaurant_selector.fetch_and_save(
         address=address,
         food_type=food_type or None,
-        #out_file="/Users/josemanuelmuelas/Desktop/Express_Gastronomic_Route/Database/Users_preferences/restaurant_details.json"
-        out_file = os.path.join(user_prefs_dir, "restaurant_details.json")
+        out_file=os.path.join(user_prefs_dir, "restaurant_details.json")
     )
     st.success(f"✅ {len(restaurant_list)} restaurants found.")
 

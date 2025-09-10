@@ -9,8 +9,6 @@
 
 ---
 
----
-
 ## 🌟 What is this?
 
 **Ruta Gastronómica Express** is a smart web app that suggests personalized routes through the best restaurants based on your tastes, budget, weather... and your hunger for adventure! 
@@ -94,9 +92,7 @@ streamlit run app.py
 
 ---
 
-## 🚧 Project Status
-
-- 🔍 In development  
+## 🔗 [Project Overview](https://www.linkedin.com/posts/josemanuel-muelas-delalinde_acabo-de-terminar-la-primera-versi%C3%B3n-final-activity-7351652071026098176-jX1e?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEiBJWkB0u6D02UhWms54rcHrCKXGSq-Uz0)
 
 ---
 
@@ -113,7 +109,7 @@ See the [`LICENSE`](./LICENSE) file for more details.
 Master’s Student in Big Data, AI & Data Engineering
 
 
-📍 Málaga, Spain  
-🔗 [LinkedIn](www.linkedin.com/in/josemanuel-muelas-delalinde)  
+📍 Madrid, Spain  
+🔗 [Personal Web](https://josema-porfolio.vercel.app/)  
 🐙 [GitHub](https://github.com/josemauma)
 
